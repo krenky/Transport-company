@@ -1,0 +1,16 @@
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.csprojAssemblyReference.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.AssemblyInfoInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.AssemblyInfo.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.csproj.CoreCompileInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.exe
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.deps.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.runtimeconfig.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.runtimeconfig.dev.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\ref\TestAuto.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\bin\Debug\net5.0\TestAuto.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\ref\TestAuto.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TestAuto\TestAuto\obj\Debug\net5.0\TestAuto.genruntimeconfig.cache
