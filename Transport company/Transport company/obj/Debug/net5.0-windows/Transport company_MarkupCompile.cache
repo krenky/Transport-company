@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\App.xaml
-31529748392
+3-1708906007
 
-81946602660
+8-1125633451
 193-1891726104
-MainWindow.xaml;ModalWindow.xaml;TraceModalWindow.xaml;
+AutoModalWindow.xaml;MainWindow.xaml;TraceModalWindow.xaml;
 
-True
+False
 

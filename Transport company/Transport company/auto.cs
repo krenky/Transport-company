@@ -71,7 +71,7 @@ namespace Transport_company
                 }
             }
         }
-        public void SearchAndAddTrace(string Start, string Finish, string Input, DateTime time, float mass)
+        public void SearchAndAddTrace(string Start, string Finish, string Input, DateTime time, int mass)
         {
             if(Search(Input) != -1)
             {
@@ -86,7 +86,7 @@ namespace Transport_company
             Automobile[2, End] = Rider;
             Traces[End] = new Trace<string>();
         }
-        public void SearchAndAddTrace(string input, string Start, string Finish, float mass)
+        public void SearchAndAddTrace(string input, string Start, string Finish, int mass)
         {
             if (Search(input) != -1)
             {

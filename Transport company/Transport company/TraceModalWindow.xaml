@@ -7,13 +7,22 @@
         mc:Ignorable="d"
         Title="Добавление маршрута" Height="226" Width="352">
     <Grid>
-        <TextBlock Name="TextStart" Margin="10,10,295,180">Start</TextBlock>
-        <TextBlock Name="TextFinish" Margin="176,10,129,180">Finish</TextBlock>
-        <TextBlock Name="TextMass" Margin="10,60,295,130">Mass</TextBlock>
-        <TextBox Name="Start" Margin="10,35,182,155">Moscow</TextBox>
-        <TextBox Name="Finish" Margin="176,35,10,155">Kazan</TextBox>
-        <TextBox Name="Mass" Margin="10,85,182,105">19,6</TextBox>
-        <Button IsCancel="True" MinWidth="60" Content="Отмена" Margin="262,180,10,10"/>
-        <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="177,180,95,10" Content="OK"/>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="TextStart" Margin="10,10,10,35">Start</TextBlock>
+        <TextBlock Name="TextFinish" Grid.Column="1" Margin="10,10,10,35">Finish</TextBlock>
+        <TextBlock Name="TextMass" Margin="10,10,10,35" Grid.Row="1">Mass</TextBlock>
+        <TextBox Name="Start" Margin="10,35,10,10">Moscow</TextBox>
+        <TextBox Name="Finish" Grid.Column="1" Margin="10,35,10,10">Kazan</TextBox>
+        <TextBox Name="Mass" Margin="10,35,10,10" Grid.Row="1">19</TextBox>
+        <Button IsCancel="True" MinWidth="60" Content="Отмена" Grid.Column="1" Margin="88,35,10,10" Grid.Row="2"/>
+        <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Content="OK" Margin="10,35,93,10" Grid.Row="2" Grid.Column="1"/>
     </Grid>
 </Window>

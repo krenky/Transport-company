@@ -98,7 +98,7 @@ namespace Transport_company
                 DoublyNode<T> current = Head;
                 do
                 {
-                    Sim = Sim + "Start: " + current.Start1 + " " + "Finish: " + current.Finish1 + " " + "Time: " + current.Time1 + "\n";
+                    Sim = Sim + "Start: " + current.Start1 + " " + "Finish: " + current.Finish1 + " " + "Time: " + current.Time1 + " Масса груза: " + current.Mass1 + "\n";
                     if (current != null)
                     {
                         current = current.Next;

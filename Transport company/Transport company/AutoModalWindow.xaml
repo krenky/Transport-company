@@ -1,4 +1,4 @@
-﻿<Window x:Class="Transport_company.ModalWindow"
+﻿<Window x:Class="Transport_company.AutoModalWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,8 +8,8 @@
         Title="Добавление авто" Height="226" Width="352">
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="22" />
+            <RowDefinition Height="18" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -18,10 +18,8 @@
         <TextBlock Margin="0,61,0,-46" Grid.Row="2">Имя водителя</TextBlock>
         <TextBox Name="ModelAuto" Grid.Row="1" MinWidth="250">Lada</TextBox>
         <TextBox Name="GosNomber" Grid.Row="2" MinWidth="250" Margin="0,30,0,-15">AA111A</TextBox>
-        <TextBox Name="Name" Grid.Row="2" MinWidth="250" Margin="0,86,0,-75" >Арсений</TextBox>
-        <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0"/>
-        <Button IsCancel="True" MinWidth="60" Content="Отмена" Margin="250,129,0,-114" Grid.Row="2"/>
-        <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="163,129,87,-114" Content="OK" Grid.Row="2"/>
-
+        <TextBox Name="NameRide" Grid.Row="2" MinWidth="250" Margin="0,86,0,-75" >Арсений</TextBox>
+        <Button Name="Cancel" IsCancel="True" MinWidth="60" Content="Отмена" Margin="250,114,0,-99" Grid.Row="2"/>
+        <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="163,114,87,-99" Content="OK" Grid.Row="2"/>
     </Grid>
 </Window>

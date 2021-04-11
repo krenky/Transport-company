@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Transport_company
 {
     /// <summary>
-    /// Логика взаимодействия для ModalWindow.xaml
+    /// Логика взаимодействия для AutoModalWindow.xaml
     /// </summary>
-    public partial class ModalWindow : Window
+    public partial class AutoModalWindow : Window
     {
-        public ModalWindow()
+        public AutoModalWindow()
         {
             InitializeComponent();
         }
@@ -38,7 +38,7 @@ namespace Transport_company
         }
         public string NameRider
         {
-            get { return Name.Text; }
+            get { return NameRide.Text; }
         }
     }
 }

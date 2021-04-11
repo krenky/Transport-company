@@ -32,7 +32,7 @@ namespace Transport_company
         auto Auto = new auto();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ModalWindow AutoWindow = new ModalWindow();
+            AutoModalWindow AutoWindow = new AutoModalWindow();
             if(AutoWindow.ShowDialog() == true)
             {
                 Auto.Add(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
@@ -62,8 +62,12 @@ namespace Transport_company
             if (traceModal.ShowDialog() == true)
             {
                 Auto.SearchAndAddTrace(AutoComboBox.Text, traceModal.GetStart, traceModal.GetFinish, traceModal.GetMass);
-                AutoComboBox.DropDownClosed += OnDropDownClosed;
+                if (AutoComboBox.IsDropDownOpen == false)
+                {
+                    BlockInfo.Text = Auto.SearchAndPrint(AutoComboBox.Text);
+                }
             }
         }
+
     }
 }
