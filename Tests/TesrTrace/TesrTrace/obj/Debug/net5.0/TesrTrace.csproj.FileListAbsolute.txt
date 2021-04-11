@@ -1,0 +1,16 @@
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.exe
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.deps.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.runtimeconfig.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.runtimeconfig.dev.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\ref\TesrTrace.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\bin\Debug\net5.0\TesrTrace.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.csprojAssemblyReference.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.AssemblyInfoInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.AssemblyInfo.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.csproj.CoreCompileInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\ref\TesrTrace.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Tests\TesrTrace\TesrTrace\obj\Debug\net5.0\TesrTrace.genruntimeconfig.cache

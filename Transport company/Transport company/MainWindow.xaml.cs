@@ -23,6 +23,37 @@ namespace Transport_company
         public MainWindow()
         {
             InitializeComponent();
+            AutoComboBox.Items.Add("");
+            AutoComboBox.Items.Add("");
+            AutoComboBox.Items.Add("");
+            AutoComboBox.Items.Add("");
+            AutoComboBox.Items.Add("");
+        }
+        auto Auto = new auto();
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ModalWindow AutoWindow = new ModalWindow();
+            if(AutoWindow.ShowDialog() == true)
+            {
+                Auto.Add(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
+                //AutoComboBox.Items.Insert(Auto.End1, Auto.Automobile1[0, Auto.End1]);
+                insert();
+            }
+        }
+        void OnDropDownClosed(object sender, EventArgs e)
+        {
+            if (AutoComboBox.IsDropDownOpen == false)
+            {
+                BlockInfo.Text = Auto.SearchAndPrint(AutoComboBox.Text);
+            }
+        }
+        public void insert()
+        {
+            AutoComboBox.Items.Clear();
+            for (int i = 0; i < auto.Count1; i++)
+            {
+                AutoComboBox.Items.Insert(i, Auto.Automobile1[0, i]);
+            }
         }
     }
 }

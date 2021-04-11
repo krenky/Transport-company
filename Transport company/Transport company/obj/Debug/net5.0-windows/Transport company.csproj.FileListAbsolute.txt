@@ -20,3 +20,5 @@ C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport 
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\ref\Transport company.dll
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.pdb
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.genruntimeconfig.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\ModalWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\ModalWindow.baml
