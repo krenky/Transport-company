@@ -12,7 +12,7 @@ namespace Transport_company
         DoublyNode<T> Head;
         DoublyNode<T> Tail;
         int Count;
-        public void Add(T Start, T Finish, float mass)
+        public void Add(T Start, T Finish, int mass)
         {
             DoublyNode<T> node = new DoublyNode<T>(Start, Finish, mass);
 
@@ -112,7 +112,7 @@ namespace Transport_company
     }
     public class DoublyNode<T>
     {
-        public DoublyNode(T start, T finish, float mass)
+        public DoublyNode(T start, T finish, int mass)
         {
             Start1 = start;
             Finish1 = finish;
@@ -128,12 +128,12 @@ namespace Transport_company
         private T Start;
         private T Finish;
         private DateTime Time;
-        private float Mass;
+        private int Mass;
         public DoublyNode<T> Previous { get; set; }
         public DoublyNode<T> Next { get; set; }
         public T Start1 { get => Start; set => Start = value; }
         public T Finish1 { get => Finish; set => Finish = value; }
         public DateTime Time1 { get => Time; set => Time = value; }
-        public float Mass1 { get => Mass; set => Mass = value; }
+        public int Mass1 { get => Mass; set => Mass = value; }
     }
 }

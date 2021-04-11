@@ -55,5 +55,15 @@ namespace Transport_company
                 AutoComboBox.Items.Insert(i, Auto.Automobile1[0, i]);
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TraceModalWindow traceModal = new TraceModalWindow();
+            if (traceModal.ShowDialog() == true)
+            {
+                Auto.SearchAndAddTrace(AutoComboBox.Text, traceModal.GetStart, traceModal.GetFinish, traceModal.GetMass);
+                AutoComboBox.DropDownClosed += OnDropDownClosed;
+            }
+        }
     }
 }

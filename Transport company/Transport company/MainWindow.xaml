@@ -10,7 +10,8 @@
         <ComboBox Name="AutoComboBox" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="OnDropDownClosed"/>
         <TextBlock Name="BlockInfo" HorizontalAlignment="Left" Margin="10,10,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="207" Width="390"/>
         <Calendar HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Добавить авто" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Добавить авто" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Добавить маршрут" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" Height="20" Width="120" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
