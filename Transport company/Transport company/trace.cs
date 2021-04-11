@@ -7,11 +7,24 @@ using System.Threading.Tasks;
 
 namespace Transport_company
 {
+    /// <summary>
+    /// Класс Trace для управления 
+    /// списком
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class Trace<T> 
     {
         DoublyNode<T> Head;
         DoublyNode<T> Tail;
         int Count;
+
+        /// <summary>
+        /// Добавление нового маршрута
+        /// с грузом
+        /// </summary>
+        /// <param name="Start">Начало маршрута</param>
+        /// <param name="Finish">конец маршрута</param>
+        /// <param name="mass">Масса груза</param>
         public void Add(T Start, T Finish, int mass)
         {
             DoublyNode<T> node = new DoublyNode<T>(Start, Finish, mass);
@@ -32,6 +45,13 @@ namespace Transport_company
             Tail = node;
             Count++;
         }
+
+        /// <summary>
+        /// Добавление нового маршрута
+        /// без груза
+        /// </summary>
+        /// <param name="Start">Начало маршрута</param>
+        /// <param name="Finish">конец маршрута</param>
         public void Add(T Start, T Finish)
         {
             DoublyNode<T> node = new DoublyNode<T>(Start, Finish);
@@ -52,6 +72,13 @@ namespace Transport_company
             Tail = node;
             Count++;
         }
+
+        /// <summary>
+        /// Поиск и удаление маршрута
+        /// </summary>
+        /// <param name="start">Начало маршрута</param>
+        /// <param name="finish">конец маршрута</param>
+        /// <returns>True - Успешно, False - не найден</returns>
         public bool Remove(String start, string finish)
         {
             DoublyNode<T> current = Head;
@@ -90,6 +117,12 @@ namespace Transport_company
             }
             return false;
         }
+
+        /// <summary>
+        /// получение строки
+        /// с информациеq о всех маршрутах
+        /// </summary>
+        /// <returns>String</returns>
         public String PrintAll()
         {
             if (Head != null)
@@ -110,8 +143,19 @@ namespace Transport_company
             else return "Поездок не было";
         }
     }
+    /// <summary>
+    /// Класс DoublyNode является основой для замкнутого
+    /// двунаправленного списка
+    /// </summary>
+    /// <typeparam name="T">Тип данных заголовков</typeparam>
     public class DoublyNode<T>
     {
+        /// <summary>
+        /// конструктор DoublyNode
+        /// </summary>
+        /// <param name="start">Начало маршрута</param>
+        /// <param name="finish">конец маршрута</param>
+        /// <param name="mass">Масса груза</param>
         public DoublyNode(T start, T finish, int mass)
         {
             Start1 = start;

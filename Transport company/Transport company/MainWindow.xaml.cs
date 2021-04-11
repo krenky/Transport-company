@@ -52,7 +52,7 @@ namespace Transport_company
             AutoComboBox.Items.Clear();
             for (int i = 0; i < auto.Count1; i++)
             {
-                AutoComboBox.Items.Insert(i, Auto.Automobile1[0, i]);
+                AutoComboBox.Items.Insert(i, Auto.Automobile1[i]);
             }
         }
 
