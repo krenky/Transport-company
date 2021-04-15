@@ -12,7 +12,7 @@ namespace Transport_company
     /// списком
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class Trace<T> 
+    public class Trace<T> 
     {
         DoublyNode<T> Head;
         DoublyNode<T> Tail;
@@ -32,15 +32,15 @@ namespace Transport_company
             if (Head == null)
             {
                 Head = node;
-                Head.Next = node;
-                Head.Previous = node;
+                Head.Next1 = node;
+                Head.Previous1 = node;
             }
             else
             {
-                node.Previous = Head.Previous;
-                node.Next = Head;
-                Head.Previous.Next = node;
-                Head.Previous = node;
+                node.Previous1 = Head.Previous1;
+                node.Next1 = Head;
+                Head.Previous1.Next1 = node;
+                Head.Previous1 = node;
             }
             Tail = node;
             Count++;
@@ -59,15 +59,15 @@ namespace Transport_company
             if (Head == null)
             {
                 Head = node;
-                Head.Next = node;
-                Head.Previous = node;
+                Head.Next1 = node;
+                Head.Previous1 = node;
             }
             else
             {
-                node.Previous = Head.Previous;
-                node.Next = Head;
-                Head.Previous.Next = node;
-                Head.Previous = node;
+                node.Previous1 = Head.Previous1;
+                node.Next1 = Head;
+                Head.Previous1.Next1 = node;
+                Head.Previous1 = node;
             }
             Tail = node;
             Count++;
@@ -93,7 +93,7 @@ namespace Transport_company
                     removedItem = current;
                     break;
                 }
-                current = current.Next;
+                current = current.Next1;
             }
             while (current != Head);
 
@@ -107,10 +107,10 @@ namespace Transport_company
                     // если удаляется первый элемент
                     if (removedItem == Head)
                     {
-                        Head = Head.Next;
+                        Head = Head.Next1;
                     }
-                    removedItem.Previous.Next = removedItem.Next;
-                    removedItem.Next.Previous = removedItem.Previous;
+                    removedItem.Previous1.Next1 = removedItem.Next1;
+                    removedItem.Next1.Previous1 = removedItem.Previous1;
                 }
                 Count--;
                 return true;
@@ -134,7 +134,7 @@ namespace Transport_company
                     Sim = Sim + "Start: " + current.Start1 + " " + "Finish: " + current.Finish1 + " " + "Time: " + current.Time1 + " Масса груза: " + current.Mass1 + "\n";
                     if (current != null)
                     {
-                        current = current.Next;
+                        current = current.Next1;
                     }
                 }
                 while (current != Head);
@@ -173,11 +173,13 @@ namespace Transport_company
         private T Finish;
         private DateTime Time;
         private int Mass;
-        public DoublyNode<T> Previous { get; set; }
-        public DoublyNode<T> Next { get; set; }
+        private DoublyNode<T> Previous;
+        private DoublyNode<T> Next;
         public T Start1 { get => Start; set => Start = value; }
         public T Finish1 { get => Finish; set => Finish = value; }
         public DateTime Time1 { get => Time; set => Time = value; }
         public int Mass1 { get => Mass; set => Mass = value; }
+        public DoublyNode<T> Previous1 { get => Previous; set => Previous = value; }
+        public DoublyNode<T> Next1 { get => Next; set => Next = value; }
     }
 }

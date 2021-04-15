@@ -24,3 +24,6 @@ C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport 
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\AutoModalWindow.g.cs
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\TraceModalWindow.baml
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\AutoModalWindow.baml
+Z:\Факультет Информационных Технологий\SNazarov\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.dll
+Z:\Факультет Информационных Технологий\SNazarov\Transport company\Transport company\obj\Debug\net5.0-windows\ref\Transport company.dll
+Z:\Факультет Информационных Технологий\SNazarov\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.pdb
