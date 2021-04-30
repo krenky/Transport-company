@@ -20,6 +20,7 @@ namespace Transport_company
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<AutoT> Company = new List<AutoT>();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,16 +30,22 @@ namespace Transport_company
             AutoComboBox.Items.Add("");
             AutoComboBox.Items.Add("");
         }
-        auto Auto = new auto();
+        TransportComp Auto = new TransportComp(5);
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AutoModalWindow AutoWindow = new AutoModalWindow();
-            if(AutoWindow.ShowDialog() == true)
+            if (AutoWindow.ShowDialog() == true)
             {
                 Auto.Add(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
                 //AutoComboBox.Items.Insert(Auto.End1, Auto.Automobile1[0, Auto.End1]);
-                insert();
-            }
+                AddInList(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
+                //insert();
+                TableCompany.Items.Clear();
+                foreach (var i in Company) 
+                {
+                    TableCompany.Items.Add();
+                }
+            } 
         }
         void OnDropDownClosed(object sender, EventArgs e)
         {
@@ -50,9 +57,12 @@ namespace Transport_company
         public void insert()
         {
             AutoComboBox.Items.Clear();
-            for (int i = 0; i < auto.Count1; i++)
+            for (int i = 0; i < Auto.Count; i++)
             {
-                AutoComboBox.Items.Insert(i, Auto.Automobile1[i]);
+                if (Auto.Company1[i].Automobile1 != null) 
+                {
+                    AutoComboBox.Items.Insert(i, Auto.Company1[i].Automobile1);
+                } 
             }
         }
 
@@ -68,6 +78,21 @@ namespace Transport_company
                 }
             }
         }
+        public void AddInList(string Model, string Nomber, string Rider)
+        {
+            if (Auto.Count<5)
+            {
+                Company.Add(new AutoT(Model, Nomber, Rider));
+            }
+            else
+            {
+                Company.Insert(Auto.End1, new AutoT(Model, Nomber, Rider));
+            }
+        }
 
+        private void TableCompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

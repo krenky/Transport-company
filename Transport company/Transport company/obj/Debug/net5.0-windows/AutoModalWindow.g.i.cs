@@ -85,7 +85,7 @@ namespace Transport_company {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Transport company;V1.0.0.0;component/automodalwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Transport company;component/automodalwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AutoModalWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\Факультет Информационных Технологий\\SNazarov\\Transport company\\Transport company\\Transport company.csproj": {}
+    "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\Transport company.csproj": {}
   },
   "projects": {
-    "Z:\\Факультет Информационных Технологий\\SNazarov\\Transport company\\Transport company\\Transport company.csproj": {
+    "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\Transport company.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\Факультет Информационных Технологий\\SNazarov\\Transport company\\Transport company\\Transport company.csproj",
+        "projectUniqueName": "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\Transport company.csproj",
         "projectName": "Transport company",
-        "projectPath": "Z:\\Факультет Информационных Технологий\\SNazarov\\Transport company\\Transport company\\Transport company.csproj",
-        "packagesPath": "C:\\Users\\Snazarov\\.nuget\\packages\\",
-        "outputPath": "Z:\\Факультет Информационных Технологий\\SNazarov\\Transport company\\Transport company\\obj\\",
+        "projectPath": "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\Transport company.csproj",
+        "packagesPath": "C:\\Users\\Strange\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Snazarov\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Strange\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows7.0"

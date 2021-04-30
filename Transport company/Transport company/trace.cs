@@ -11,11 +11,11 @@ namespace Transport_company
     /// Класс Trace для управления 
     /// списком
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class Trace<T> 
+    /// <typeparam name="string"></typeparam>
+    public class Trace 
     {
-        DoublyNode<T> Head;
-        DoublyNode<T> Tail;
+        DoublyNode Head;
+        DoublyNode Tail;
         int Count;
 
         /// <summary>
@@ -25,10 +25,8 @@ namespace Transport_company
         /// <param name="Start">Начало маршрута</param>
         /// <param name="Finish">конец маршрута</param>
         /// <param name="mass">Масса груза</param>
-        public void Add(T Start, T Finish, int mass)
+        public void Add(DoublyNode node)
         {
-            DoublyNode<T> node = new DoublyNode<T>(Start, Finish, mass);
-
             if (Head == null)
             {
                 Head = node;
@@ -52,9 +50,9 @@ namespace Transport_company
         /// </summary>
         /// <param name="Start">Начало маршрута</param>
         /// <param name="Finish">конец маршрута</param>
-        public void Add(T Start, T Finish)
+        public void Add(string Start, string Finish)
         {
-            DoublyNode<T> node = new DoublyNode<T>(Start, Finish);
+            DoublyNode node = new DoublyNode(Start, Finish);
 
             if (Head == null)
             {
@@ -81,9 +79,9 @@ namespace Transport_company
         /// <returns>True - Успешно, False - не найден</returns>
         public bool Remove(String start, string finish)
         {
-            DoublyNode<T> current = Head;
+            DoublyNode current = Head;
 
-            DoublyNode<T> removedItem = null;
+            DoublyNode removedItem = null;
             if (Count == 0) return false;
             // поиск удаляемого узла
             do
@@ -128,7 +126,7 @@ namespace Transport_company
             if (Head != null)
             {
                 string Sim = "";
-                DoublyNode<T> current = Head;
+                DoublyNode current = Head;
                 do
                 {
                     Sim = Sim + "Start: " + current.Start1 + " " + "Finish: " + current.Finish1 + " " + "Time: " + current.Time1 + " Масса груза: " + current.Mass1 + "\n";
@@ -142,13 +140,79 @@ namespace Transport_company
             }
             else return "Поездок не было";
         }
+
+        public int AllMass()
+        {
+            int sum = 0;
+            DoublyNode Current = Head;
+            do
+            {
+                if (Current != null)
+                {
+                    sum = sum + Current.Mass1;
+                }
+            }
+            while (Current != Head);
+            return sum;
+        }
+        /// <summary>
+        /// Добавление элемента AddingItem после
+        /// элемента Item
+        /// </summary>
+        /// <param name="AddingItem"></param>
+        /// <param name="Item"></param>
+        /// <returns></returns>
+        public DoublyNode AddBetween(DoublyNode AddingItem, DoublyNode Item)
+        {
+            AddingItem.Previous1 = Item;
+            AddingItem.Next1 = Item.Next1;
+            Item.Next1 = AddingItem;
+            Item.Next1.Previous1 = AddingItem;
+            Count++;
+            return Item;
+        }
+
+        private void AddHead(DoublyNode node)
+        {
+            node.Previous1 = Tail;
+            node.Next1 = Head;
+            Head = node;
+            Count++;
+        }
+        public void SearchAndPast(DoublyNode node)
+        {
+            if(node.Time1 > Head.Time1 && node.Time1 < Tail.Time1)
+            {
+                Head = SearchNode(node, Head);
+            }
+            else
+            {
+                if (node.Time1 < Head.Time1)
+                {
+                    AddHead(node);
+                }
+                else Add(node);
+            }
+        }
+        public DoublyNode SearchNode(DoublyNode node, DoublyNode SrchNode)
+        {
+            if(SrchNode.Next1.Time1 > node.Time1)
+            {
+                return SrchNode = AddBetween(node, SrchNode);
+            }
+            else
+            {
+                SrchNode.Next1 = SearchNode(node, SrchNode.Next1);
+                return SrchNode;
+            }
+        }
     }
     /// <summary>
     /// Класс DoublyNode является основой для замкнутого
     /// двунаправленного списка
     /// </summary>
-    /// <typeparam name="T">Тип данных заголовков</typeparam>
-    public class DoublyNode<T>
+    /// <typeparam name="string">Тип данных заголовков</typeparam>
+    public class DoublyNode
     {
         /// <summary>
         /// конструктор DoublyNode
@@ -156,30 +220,37 @@ namespace Transport_company
         /// <param name="start">Начало маршрута</param>
         /// <param name="finish">конец маршрута</param>
         /// <param name="mass">Масса груза</param>
-        public DoublyNode(T start, T finish, int mass)
+        public DoublyNode(string start, string finish, int mass)
         {
             Start1 = start;
             Finish1 = finish;
             Time1 = DateTime.Now;
             Mass1 = mass;
         }
-        public DoublyNode(T start, T finish)
+        public DoublyNode(string start, string finish, int mass, DateTime time)
+        {
+            Start1 = start;
+            Finish1 = finish;
+            Time1 = time;
+            Mass1 = mass;
+        }
+        public DoublyNode(string start, string finish)
         {
             Start1 = start;
             Finish1 = finish;
         }
 
-        private T Start;
-        private T Finish;
+        private string Start;
+        private string Finish;
         private DateTime Time;
         private int Mass;
-        private DoublyNode<T> Previous;
-        private DoublyNode<T> Next;
-        public T Start1 { get => Start; set => Start = value; }
-        public T Finish1 { get => Finish; set => Finish = value; }
+        private DoublyNode Previous;
+        private DoublyNode Next;
+        public string Start1 { get => Start; set => Start = value; }
+        public string Finish1 { get => Finish; set => Finish = value; }
         public DateTime Time1 { get => Time; set => Time = value; }
         public int Mass1 { get => Mass; set => Mass = value; }
-        public DoublyNode<T> Previous1 { get => Previous; set => Previous = value; }
-        public DoublyNode<T> Next1 { get => Next; set => Next = value; }
+        public DoublyNode Previous1 { get => Previous; set => Previous = value; }
+        public DoublyNode Next1 { get => Next; set => Next = value; }
     }
 }

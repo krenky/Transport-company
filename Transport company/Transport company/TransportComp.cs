@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace Transport_company
 {
-    class TransportComp
+    class TransportComp: IEnumerable
     {
-        int First, End = -1;
-        static int Count = 5;
-        AutoT<string>[] Company = new AutoT<string>[Count];
+        int First = -1; 
+        int End = -1;
+        public int Count;
+        AutoT[] Company;
+
+        public TransportComp(int IntCount)
+        {
+            Company = new AutoT[IntCount];
+            Count = IntCount;
+        }
+
+        public AutoT[] Company1 { get => Company; set => Company = value; }
+        public int End1 { get => End; set => End = value; }
+
         public void Add(string Auto, string GosNamber, string Rider)
         {
             //if(End == -1 | End < First)
@@ -68,16 +80,20 @@ namespace Transport_company
         private void OnlyAdd(string Auto, string GosNamber, string Rider)
         {
             End++;
-            Company[End].Automobile1 = Auto;
-            Company[End].GosNamber1 = GosNamber;
-            Company[End].Name1 = Rider;
-            Company[End].Traces = new Trace<string>();
+            Company[End] = new AutoT(Auto, GosNamber, Rider);
         }
         public void SearchAndAddTrace(string input, string Start, string Finish, int mass)
         {
             if (Search(input) != -1)
             {
-                Company[Search(input)].Traces.Add(Start, Finish, mass);
+                Company[Search(input)].GetTraces1().Add(new DoublyNode(Start, Finish, mass));
+            }
+        }
+        public void SearchAndAddTrace(string input, string Start, string Finish, int mass, DateTime time)
+        {
+            if (Search(input) != -1)
+            {
+                Company[Search(input)].GetTraces1().Add(new DoublyNode(Start, Finish, mass, time));
             }
         }
         public int Search(string Input)
@@ -122,13 +138,27 @@ namespace Transport_company
         {
             if (Index != -1)
             {
-                string Info = "Auto: " + Company[Index].Automobile1 + "\n" + "Nomber: " + Company[Index].GosNamber1 + "\n" + "Rider: " + Company[Index].Name1 + "\n" + Company[Index].Traces.PrintAll();
+                string Info = "Auto: " + Company[Index].Automobile1 + "\n" + "Nomber: " + Company[Index].GosNamber1 + "\n" + "Rider: " + Company[Index].Name1 + "\n" + Company[Index].GetTraces1().PrintAll();
                 return Info;
             }
             else
             {
                 return "Not found";
             }
+        }
+        public int Sum()
+        {
+            int sum = 0;
+            foreach(AutoT i in Company)
+            {
+                sum = sum + i.GetTraces1().AllMass();
+            }
+            return sum;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return Company.GetEnumerator();
         }
     }
 }
