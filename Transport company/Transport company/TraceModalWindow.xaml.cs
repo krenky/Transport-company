@@ -24,9 +24,12 @@ namespace Transport_company
             InitializeComponent();
         }
 
+        
+
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+            
         }
         public String GetFinish
         {

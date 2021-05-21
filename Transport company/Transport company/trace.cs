@@ -12,7 +12,7 @@ namespace Transport_company
     /// списком
     /// </summary>
     /// <typeparam name="string"></typeparam>
-    public class Trace 
+    public class Trace : IEnumerable
     {
         DoublyNode Head;
         DoublyNode Tail;
@@ -205,6 +205,20 @@ namespace Transport_company
                 SrchNode.Next1 = SearchNode(node, SrchNode.Next1);
                 return SrchNode;
             }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            DoublyNode current = Head;
+            do
+            {
+                if (current != null)
+                {
+                    yield return current;
+                    current = current.Next1;
+                }
+            }
+            while (current != Tail);
         }
     }
     /// <summary>

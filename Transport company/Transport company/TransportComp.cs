@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Transport_company
 {
-    class TransportComp: IEnumerable
+    class TransportComp
     {
-        int First = -1; 
-        int End = -1;
+        int Head = -1; 
+        int Tail = -1;
         public int Count;
         AutoT[] Company;
 
@@ -21,108 +20,114 @@ namespace Transport_company
         }
 
         public AutoT[] Company1 { get => Company; set => Company = value; }
-        public int End1 { get => End; set => End = value; }
+        public int End1 { get => Tail; set => Tail = value; }
 
-        public void Add(string Auto, string GosNamber, string Rider)
+        public bool isEmpty()
         {
-            //if(End == -1 | End < First)
+            return Head == Tail;
+        }
+        public bool isFull()
+        {
+            if ((Head == Tail + 1) || (Head == 0 && Tail == Count - 1))
+            {
+                return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// вставляет элементы высчитавая индекс по формуле
+        ///  ((индекс пос.элемента+1) % count) 
+        /// </summary>
+        /// <param name="Auto"></param>
+        /// <param name="GosNamber"></param>
+        /// <param name="Rider"></param>
+        /// <returns></returns>
+        public bool Push(string Auto, string GosNamber, string Rider)
+        {
+            AutoT auto = new AutoT(Auto, GosNamber, Rider);
+            //if (!isFull())
             //{
-            //    First++;
-            //    OnlyAdd(Auto, GosNamber, Rider);
+                if (Head == -1) Head = 0;
+                Tail = (Tail + 1) % Count;
+                Company[Tail] = auto;
+                return true;
             //}
-            if (First < End)
-            {
-                if (End != Count - 1)
-                {
-                    if (End == -1)
-                    {
-                        if (First == -1)
-                        {
-                            First++;
-                            OnlyAdd(Auto, GosNamber, Rider);
-                        }
-                    }
-                    else
-                    {
-                        if (End < Count - 1)
-                        {
-                            OnlyAdd(Auto, GosNamber, Rider);
-                        }
-                        else
-                        {
-                            First++;
-                            End = -1;
-                            OnlyAdd(Auto, GosNamber, Rider);
-                        }
-                    }
-                }
-                else
-                {
-                    First++;
-                    End = -1;
-                    OnlyAdd(Auto, GosNamber, Rider);
-                }
-            }
-            else
-            {
-                if (First < Count)
-                {
-                    First++;
-                    OnlyAdd(Auto, GosNamber, Rider);
-                }
-                else
-                {
-                    First = 0;
-                    Add(Auto, GosNamber, Rider);
-                }
-            }
+            //return false;
         }
-        private void OnlyAdd(string Auto, string GosNamber, string Rider)
+        /// <summary>
+        /// вставляет элементы высчитавая индекс по формуле
+        ///  ((индекс пос.элемента+1) % count)
+        /// </summary>
+        /// <param name="auto"></param>
+        /// <returns></returns>
+        public bool Push(AutoT auto)
         {
-            End++;
-            Company[End] = new AutoT(Auto, GosNamber, Rider);
+            if (!isFull())
+            {
+                if (Head == -1) Head = 0;
+                Tail = (Tail + 1) % Count;
+                Company[Tail] = auto;
+                return true;
+            }
+            return false;
         }
+        /// <summary>
+        /// метод для добавления поездки
+        /// </summary>
+        /// <param name="input">данные для поиска</param>
+        /// <param name="Start"></param>
+        /// <param name="Finish"></param>
+        /// <param name="mass"></param>
         public void SearchAndAddTrace(string input, string Start, string Finish, int mass)
         {
             if (Search(input) != -1)
             {
-                Company[Search(input)].GetTraces1().Add(new DoublyNode(Start, Finish, mass));
+                Company[Search(input)].Traces1.Add(new DoublyNode(Start, Finish, mass));
             }
         }
-        public void SearchAndAddTrace(string input, string Start, string Finish, int mass, DateTime time)
-        {
-            if (Search(input) != -1)
-            {
-                Company[Search(input)].GetTraces1().Add(new DoublyNode(Start, Finish, mass, time));
-            }
-        }
+        /// <summary>
+        /// метод поиска
+        /// </summary>
+        /// <param name="Input">данные для поиска</param>
+        /// <returns></returns>
         public int Search(string Input)
         {
             for (int i = 0; i < Count; i++)
             {
-                if (Comparison(Input, i))
+                if (Company[i] != null && Comparison(Input, i))
                 {
                     return i;
                 }
             }
             return -1;
         }
+        /// <summary>
+        /// метод сравнения используемый в методе  Search
+        /// </summary>
+        /// <param name="Input"></param>
+        /// <param name="Index"></param>
+        /// <returns>true если найдено совпадение</returns>
         private bool Comparison(string Input, int Index)
         {
             if (Company[Index].Automobile1 == Input)
             {
                 return true;
             }
-            else if (Company[End].GosNamber1 == Input)
+            else if (Company[Tail].GosNamber1 == Input)
             {
                 return true;
             }
-            else if (Company[End].Name1 == Input)
+            else if (Company[Tail].Name1 == Input)
             {
                 return true;
             }
             else return false;
         }
+        /// <summary>
+        /// метод вывода информации об искомой машине
+        /// </summary>
+        /// <param name="Input"></param>
+        /// <returns>информация об автомобиле</returns>
         public string SearchAndPrint(string Input)
         {
             if (Search(Input) == -1)
@@ -134,11 +139,16 @@ namespace Transport_company
                 return Print(Search(Input));
             }
         }
+        /// <summary>
+        /// метод вывода информации об автомобиле
+        /// </summary>
+        /// <param name="Index"></param>
+        /// <returns>информация об автомобиле</returns>
         public string Print(int Index)
         {
             if (Index != -1)
             {
-                string Info = "Auto: " + Company[Index].Automobile1 + "\n" + "Nomber: " + Company[Index].GosNamber1 + "\n" + "Rider: " + Company[Index].Name1 + "\n" + Company[Index].GetTraces1().PrintAll();
+                string Info = "Auto: " + Company[Index].Automobile1 + "\n" + "Nomber: " + Company[Index].GosNamber1 + "\n" + "Rider: " + Company[Index].Name1 + "\n" + Company[Index].Traces1.PrintAll();
                 return Info;
             }
             else
@@ -146,19 +156,18 @@ namespace Transport_company
                 return "Not found";
             }
         }
+        /// <summary>
+        /// метод вывода суммы всех грузов
+        /// </summary>
+        /// <returns></returns>
         public int Sum()
         {
             int sum = 0;
             foreach(AutoT i in Company)
             {
-                sum = sum + i.GetTraces1().AllMass();
+                sum = sum + i.Traces1.AllMass();
             }
             return sum;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return Company.GetEnumerator();
         }
     }
 }
