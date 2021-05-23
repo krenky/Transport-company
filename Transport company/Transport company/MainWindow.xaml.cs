@@ -49,7 +49,7 @@ namespace Transport_company
 
         private void TableCompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string traceList = TableCompany.CurrentCell.Column.ToString();
+            string traceList = TableCompany.SelectedCells.ToString();
             TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList));
         }
 
@@ -77,6 +77,12 @@ namespace Transport_company
                 traceLists.Add(new TraceList(i.Start1, i.Finish1, i.Time1, i.Mass1));
             }
             return traceLists;
+        }
+
+        private void TableCompany_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            var traceList = (TableAuto)TableCompany.CurrentCell.Item;//сделал добавление во вторую таблицу, но добавляется только первый элемент (надо сделать событие для обновления таблицы или занисте вручную в мотоды изменения)
+            TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList.Госномер));
         }
     }
     public class TableAuto
