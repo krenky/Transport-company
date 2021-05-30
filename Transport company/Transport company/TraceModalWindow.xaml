@@ -19,12 +19,13 @@
         <TextBlock Name="TextStart" Margin="10,10,10,35">Start</TextBlock>
         <TextBlock Name="TextFinish" Grid.Column="1" Margin="10,10,10,35">Finish</TextBlock>
         <TextBlock Name="TextMass" Margin="10,10,10,35" Grid.Row="1">Mass</TextBlock>
-        <TextBox Name="Start" Margin="10,35,10,10">Moscow</TextBox>
-        <TextBox Name="Finish" Grid.Column="1" Margin="10,35,10,10">Kazan</TextBox>
-        <TextBox Name="Mass" Margin="10,35,10,10" Grid.Row="1">19</TextBox>
-        <TextBox x:Name="AutoInfo" Margin="10,35,10,10" Grid.Column="1" Grid.Row="1" Text="Lada"/>
+        <TextBox Name="Start" Margin="10,35,10,10" PreviewTextInput="Start_PreviewTextInput">Moscow</TextBox>
+        <TextBox Name="Finish" Grid.Column="1" Margin="10,35,10,10" PreviewTextInput="Finish_PreviewTextInput">Kazan</TextBox>
+        <TextBox Name="Mass" Margin="10,0,10,10" Grid.Row="1" PreviewTextInput="Mass_PreviewTextInput" Height="25" VerticalAlignment="Bottom">19</TextBox>
+        <TextBox x:Name="AutoInfo" Margin="10,35,10,10" Grid.Column="1" Grid.Row="1" Text="Lada" PreviewTextInput="AutoInfo_PreviewTextInput"/>
         <Button IsCancel="True" MinWidth="60" Content="Отмена" Grid.Column="1" Margin="88,35,10,10" Grid.Row="2"/>
         <Button IsDefault="True" Click="Accept_Click" MinWidth="60" Content="OK" Margin="10,35,93,10" Grid.Row="2" Grid.Column="1"/>
         <TextBlock x:Name="TextMass_Copy" Margin="10,10,10,35" Grid.Row="1" Grid.Column="1" Text="Auto"/>
+        <DatePicker Name="DatePick" Margin="10,10,10,0" Grid.Row="2" Grid.Column="0" SelectedDateChanged="DatePick_SelectedDateChanged" Height="25" VerticalAlignment="Top"/>
     </Grid>
 </Window>

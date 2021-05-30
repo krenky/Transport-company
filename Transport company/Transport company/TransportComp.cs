@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace Transport_company
 {
+    
     class TransportComp
     {
+        public delegate void Hendler();
+        public event Hendler AddAutoevent;
+        public event Hendler AddTraceEvent;
+
         int Head = -1; 
         int Tail = -1;
         public int Count;
@@ -50,6 +56,7 @@ namespace Transport_company
                 if (Head == -1) Head = 0;
                 Tail = (Tail + 1) % Count;
                 Company[Tail] = auto;
+                AddAutoevent?.Invoke();
                 return true;
             //}
             //return false;
@@ -67,6 +74,7 @@ namespace Transport_company
                 if (Head == -1) Head = 0;
                 Tail = (Tail + 1) % Count;
                 Company[Tail] = auto;
+                AddAutoevent?.Invoke();
                 return true;
             }
             return false;
@@ -83,6 +91,15 @@ namespace Transport_company
             if (Search(input) != -1)
             {
                 Company[Search(input)].Traces1.Add(new DoublyNode(Start, Finish, mass));
+                AddTraceEvent?.Invoke();
+            }
+        }
+        public void SearchAndAddTrace(string input, string Start, string Finish, int mass, DateTime time)
+        {
+            if (Search(input) != -1)
+            {
+                Company[Search(input)].Traces1.SearchAndPast(new DoublyNode(Start, Finish, mass, time));
+                AddTraceEvent?.Invoke();
             }
         }
         /// <summary>

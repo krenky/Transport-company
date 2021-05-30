@@ -40,5 +40,38 @@ namespace Transport_company
         {
             get { return NameRide.Text; }
         }
+
+        private void ModelAuto_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
+        }
+
+        private void ModelAuto_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back || e.Key == Key.Space)
+                e.Handled = true;
+        }
+
+        private void GosNomber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetterOrDigit(e.Text, 0));
+        }
+
+        private void GosNomber_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back || e.Key == Key.Space)
+                e.Handled = true;
+        }
+
+        private void NameRide_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
+        }
+
+        private void NameRide_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back || e.Key == Key.Space)
+                e.Handled = true;
+        }
     }
 }

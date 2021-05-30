@@ -24,7 +24,7 @@ namespace Transport_company
             InitializeComponent();
         }
 
-        
+        DateTime selectedDate = DateTime.Now;
 
         private void Accept_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +42,35 @@ namespace Transport_company
         public int GetMass
         {
             get { return Convert.ToInt32(Mass.Text); }
+        }
+        public DateTime GetDate
+        {
+            get { return selectedDate; }
+        }
+
+        private void DatePick_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedDate = (DateTime)DatePick.SelectedDate;
+        }
+
+        private void Start_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
+        }
+
+        private void Finish_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
+        }
+
+        private void Mass_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+        }
+
+        private void AutoInfo_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsLetter(e.Text, 0));
         }
     }
 }

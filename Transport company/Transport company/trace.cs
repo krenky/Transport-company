@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
 
-namespace Transport_company
+namespace Transport_company 
 {
     /// <summary>
     /// Класс Trace для управления 
@@ -17,7 +18,8 @@ namespace Transport_company
         DoublyNode Head;
         DoublyNode Tail;
         int Count;
-
+        public delegate void ChangedList();
+        public event ChangedList ChangeListEvent;
         /// <summary>
         /// Добавление нового маршрута
         /// с грузом
@@ -30,16 +32,18 @@ namespace Transport_company
             if (Head == null)
             {
                 Head = node;
-                Head.Next1 = node;
-                Head.Previous1 = node;
+                Head.Next = node;
+                Head.Previous = node;
             }
             else
             {
-                node.Previous1 = Head.Previous1;
-                node.Next1 = Head;
-                Head.Previous1.Next1 = node;
-                Head.Previous1 = node;
+                node.Previous = Head.Previous;
+                node.Next = Head;
+                Head.Previous.Next = node;
+                Head.Previous = node;
             }
+
+            ChangeListEvent?.Invoke();
             Tail = node;
             Count++;
         }
@@ -57,16 +61,17 @@ namespace Transport_company
             if (Head == null)
             {
                 Head = node;
-                Head.Next1 = node;
-                Head.Previous1 = node;
+                Head.Next = node;
+                Head.Previous = node;
             }
             else
             {
-                node.Previous1 = Head.Previous1;
-                node.Next1 = Head;
-                Head.Previous1.Next1 = node;
-                Head.Previous1 = node;
+                node.Previous = Head.Previous;
+                node.Next = Head;
+                Head.Previous.Next = node;
+                Head.Previous = node;
             }
+            ChangeListEvent?.Invoke();
             Tail = node;
             Count++;
         }
@@ -86,12 +91,12 @@ namespace Transport_company
             // поиск удаляемого узла
             do
             {
-                if (current.Start1.Equals(start) && current.Finish1.Equals(finish))
+                if (current.Старт.Equals(start) && current.Финиш.Equals(finish))
                 {
                     removedItem = current;
                     break;
                 }
-                current = current.Next1;
+                current = current.Next;
             }
             while (current != Head);
 
@@ -105,12 +110,13 @@ namespace Transport_company
                     // если удаляется первый элемент
                     if (removedItem == Head)
                     {
-                        Head = Head.Next1;
+                        Head = Head.Next;
                     }
-                    removedItem.Previous1.Next1 = removedItem.Next1;
-                    removedItem.Next1.Previous1 = removedItem.Previous1;
+                    removedItem.Previous.Next = removedItem.Next;
+                    removedItem.Next.Previous = removedItem.Previous;
                 }
                 Count--;
+                ChangeListEvent?.Invoke();
                 return true;
             }
             return false;
@@ -129,10 +135,10 @@ namespace Transport_company
                 DoublyNode current = Head;
                 do
                 {
-                    Sim = Sim + "Start: " + current.Start1 + " " + "Finish: " + current.Finish1 + " " + "Time: " + current.Time1 + " Масса груза: " + current.Mass1 + "\n";
+                    Sim = Sim + "Start: " + current.Старт + " " + "Finish: " + current.Финиш + " " + "Time: " + current.Время + " Масса груза: " + current.Масса + "\n";
                     if (current != null)
                     {
-                        current = current.Next1;
+                        current = current.Next;
                     }
                 }
                 while (current != Head);
@@ -149,7 +155,7 @@ namespace Transport_company
             {
                 if (Current != null)
                 {
-                    sum = sum + Current.Mass1;
+                    sum = sum + Current.Масса;
                 }
             }
             while (Current != Head);
@@ -164,58 +170,67 @@ namespace Transport_company
         /// <returns></returns>
         public DoublyNode AddBetween(DoublyNode AddingItem, DoublyNode Item)
         {
-            AddingItem.Previous1 = Item;
-            AddingItem.Next1 = Item.Next1;
-            Item.Next1 = AddingItem;
-            Item.Next1.Previous1 = AddingItem;
+            AddingItem.Previous = Item;
+            AddingItem.Next = Item.Next;
+            Item.Next = AddingItem;
+            Item.Next.Previous = AddingItem;
             Count++;
             return Item;
         }
 
         private void AddHead(DoublyNode node)
         {
-            node.Previous1 = Tail;
-            node.Next1 = Head;
+            node.Previous = Tail;
+            node.Next = Head;
             Head = node;
+            Tail.Next = Head;
             Count++;
         }
         public void SearchAndPast(DoublyNode node)
         {
-            if(node.Time1 > Head.Time1 && node.Time1 < Tail.Time1)
+            if (Head != null)
             {
-                Head = SearchNode(node, Head);
+                if (node.Время > Head.Время && node.Время < Tail.Время)
+                {
+                    Head = SearchNode(node, Head);
+                }
+                else
+                {
+                    if (node.Время < Head.Время)
+                    {
+                        AddHead(node);
+                    }
+                    else Add(node);
+                }
             }
             else
             {
-                if (node.Time1 < Head.Time1)
-                {
-                    AddHead(node);
-                }
-                else Add(node);
+                Add(node);
             }
+            ChangeListEvent?.Invoke();
         }
         public DoublyNode SearchNode(DoublyNode node, DoublyNode SrchNode)
         {
-            if(SrchNode.Next1.Time1 > node.Time1)
+            if(SrchNode.Next.Время > node.Время)
             {
                 return SrchNode = AddBetween(node, SrchNode);
             }
             else
             {
-                SrchNode.Next1 = SearchNode(node, SrchNode.Next1);
+                SrchNode.Next = SearchNode(node, SrchNode.Next);
                 return SrchNode;
             }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            DoublyNode current = Head;
+            DoublyNode current = Tail;
             do
             {
                 if (current != null)
                 {
+                    current = current.Next;
                     yield return current;
-                    current = current.Next1;
                 }
             }
             while (current != Tail);
@@ -236,35 +251,35 @@ namespace Transport_company
         /// <param name="mass">Масса груза</param>
         public DoublyNode(string start, string finish, int mass)
         {
-            Start1 = start;
-            Finish1 = finish;
-            Time1 = DateTime.Now;
-            Mass1 = mass;
+            Старт = start;
+            Финиш = finish;
+            Время = DateTime.Now;
+            Масса = mass;
         }
         public DoublyNode(string start, string finish, int mass, DateTime time)
         {
-            Start1 = start;
-            Finish1 = finish;
-            Time1 = time;
-            Mass1 = mass;
+            Старт = start;
+            Финиш = finish;
+            Время = time;
+            Масса = mass;
         }
         public DoublyNode(string start, string finish)
         {
-            Start1 = start;
-            Finish1 = finish;
+            Старт = start;
+            Финиш = finish;
         }
 
         private string Start;
         private string Finish;
         private DateTime Time;
         private int Mass;
-        private DoublyNode Previous;
-        private DoublyNode Next;
-        public string Start1 { get => Start; set => Start = value; }
-        public string Finish1 { get => Finish; set => Finish = value; }
-        public DateTime Time1 { get => Time; set => Time = value; }
-        public int Mass1 { get => Mass; set => Mass = value; }
-        public DoublyNode Previous1 { get => Previous; set => Previous = value; }
-        public DoublyNode Next1 { get => Next; set => Next = value; }
+        public DoublyNode Previous;
+        public DoublyNode Next;
+        public string Старт { get => Start; set => Start = value; }
+        public string Финиш { get => Finish; set => Finish = value; }
+        public DateTime Время { get => Time; set => Time = value; }
+        public int Масса { get => Mass; set => Mass = value; }
+        //public DoublyNode Previous1 { get => Previous; set => Previous = value; }
+        //public DoublyNode Next1 { get => Next; set => Next = value; }
     }
 }

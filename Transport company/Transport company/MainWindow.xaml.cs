@@ -21,41 +21,75 @@ namespace Transport_company
     public partial class MainWindow : Window
     {
         List<TableAuto> Company = new List<TableAuto>();
-        
+        TableAuto traceList;
+        TransportComp Auto = new TransportComp(5);
+        int IndexTable = 0;
+
         public MainWindow()
         {
             InitializeComponent();
+            Auto.AddAutoevent += Auto_AddAutoevent;
+            Auto.AddTraceEvent += Auto_AddTraceEvent;
         }
-        TransportComp Auto = new TransportComp(5);
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Auto_AddAutoevent()
+        {
+            TableCompany.ItemsSource = ConvertMassInList(Auto.Company1);
+        }
+
+        private void Auto_AddTraceEvent()
+        {
+            try
+            {
+                TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1[IndexTable]);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("fatal");
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)//добавить авто кнопка
         {
             AutoModalWindow AutoWindow = new AutoModalWindow();
             if (AutoWindow.ShowDialog() == true)
             {
                 Auto.Push(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
-                TableCompany.ItemsSource = ConvertMassInList(Auto.Company1);
             } 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)//Добавить маршрут кнопка
         {
             TraceModalWindow traceModal = new TraceModalWindow();
             if (traceModal.ShowDialog() == true)
             {
-                Auto.SearchAndAddTrace(traceModal.AutoInfo.Text, traceModal.GetStart, traceModal.GetFinish, traceModal.GetMass);
+                Auto.SearchAndAddTrace(traceModal.AutoInfo.Text, traceModal.GetStart, traceModal.GetFinish, traceModal.GetMass, traceModal.GetDate);
                 
             }
         }
 
         private void TableCompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string traceList = TableCompany.SelectedCells.ToString();
-            TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList));
+            try
+            {
+                if ((TableAuto)TableCompany.CurrentItem != null)
+                {
+                    traceList = (TableAuto)TableCompany.CurrentItem;
+                    IndexTable = TableCompany.SelectedIndex;
+                    //TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList.Госномер));
+                    //TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, IndexTable);
+                    TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1[IndexTable]);
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         private void TableCompany_Loaded(object sender, RoutedEventArgs e)
         {
-            TableCompany.ItemsSource = Company;
+            
         }
         private List<TableAuto> ConvertMassInList(AutoT[] Mass)
         {
@@ -69,21 +103,17 @@ namespace Transport_company
             }
             return List;
         }
-        private List<TraceList> ConvertTraceInList(AutoT[] Mass, int index)
+        private List<TraceList> ConvertTraceInList(AutoT Mass)
         {
             List<TraceList> traceLists = new List<TraceList>();
-            foreach(DoublyNode i in Mass[index].Traces1)
+            foreach (DoublyNode i in Mass.Traces1)
             {
-                traceLists.Add(new TraceList(i.Start1, i.Finish1, i.Time1, i.Mass1));
+                traceLists.Add(new TraceList(i.Старт, i.Финиш, i.Время, i.Масса));
             }
             return traceLists;
         }
 
-        private void TableCompany_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            var traceList = (TableAuto)TableCompany.CurrentCell.Item;//сделал добавление во вторую таблицу, но добавляется только первый элемент (надо сделать событие для обновления таблицы или занисте вручную в мотоды изменения)
-            TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList.Госномер));
-        }
+        
     }
     public class TableAuto
     {
