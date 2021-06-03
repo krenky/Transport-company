@@ -5,19 +5,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 
 namespace Transport_company 
 {
+    [Serializable]
     /// <summary>
     /// Класс Trace для управления 
     /// списком
     /// </summary>
     /// <typeparam name="string"></typeparam>
-    public class Trace : IEnumerable
+    public class Trace
     {
         DoublyNode Head;
         DoublyNode Tail;
         int Count;
+
+        public Trace()
+        {
+        }
+
+        public DoublyNode Tail1 { get => Tail; set => Tail = value; }
+        public DoublyNode Head1 { get => Head; set => Head = value; }
+
         public delegate void ChangedList();
         public event ChangedList ChangeListEvent;
         /// <summary>
@@ -221,21 +233,8 @@ namespace Transport_company
                 return SrchNode;
             }
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            DoublyNode current = Tail;
-            do
-            {
-                if (current != null)
-                {
-                    current = current.Next;
-                    yield return current;
-                }
-            }
-            while (current != Tail);
-        }
     }
+    [Serializable]
     /// <summary>
     /// Класс DoublyNode является основой для замкнутого
     /// двунаправленного списка
@@ -269,16 +268,22 @@ namespace Transport_company
             Финиш = finish;
         }
 
+        public DoublyNode()
+        {
+        }
+
         private string Start;
         private string Finish;
         private DateTime Time;
         private int Mass;
-        public DoublyNode Previous;
-        public DoublyNode Next;
+        private DoublyNode previous;
+        private DoublyNode next;
         public string Старт { get => Start; set => Start = value; }
         public string Финиш { get => Finish; set => Finish = value; }
         public DateTime Время { get => Time; set => Time = value; }
         public int Масса { get => Mass; set => Mass = value; }
+        public DoublyNode Previous { get => previous; set => previous = value; }
+        public DoublyNode Next { get => next; set => next = value; }
         //public DoublyNode Previous1 { get => Previous; set => Previous = value; }
         //public DoublyNode Next1 { get => Next; set => Next = value; }
     }

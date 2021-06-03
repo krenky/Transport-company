@@ -4,15 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Specialized;
+using System.Text.Json;
+using System.Runtime.Serialization;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+
 
 namespace Transport_company
 {
-    
+    [Serializable]
     class TransportComp
     {
-        public delegate void Hendler();
-        public event Hendler AddAutoevent;
-        public event Hendler AddTraceEvent;
+        //public delegate void Hendler();
+        //public event Hendler AddAutoevent;
+        //public event Hendler AddTraceEvent;
 
         int Head = -1; 
         int Tail = -1;
@@ -23,6 +29,10 @@ namespace Transport_company
         {
             Company = new AutoT[IntCount];
             Count = IntCount;
+        }
+        public TransportComp()
+        {
+
         }
 
         public AutoT[] Company1 { get => Company; set => Company = value; }
@@ -56,7 +66,7 @@ namespace Transport_company
                 if (Head == -1) Head = 0;
                 Tail = (Tail + 1) % Count;
                 Company[Tail] = auto;
-                AddAutoevent?.Invoke();
+                //AddAutoevent?.Invoke();
                 return true;
             //}
             //return false;
@@ -74,7 +84,7 @@ namespace Transport_company
                 if (Head == -1) Head = 0;
                 Tail = (Tail + 1) % Count;
                 Company[Tail] = auto;
-                AddAutoevent?.Invoke();
+                //AddAutoevent?.Invoke();
                 return true;
             }
             return false;
@@ -91,7 +101,7 @@ namespace Transport_company
             if (Search(input) != -1)
             {
                 Company[Search(input)].Traces1.Add(new DoublyNode(Start, Finish, mass));
-                AddTraceEvent?.Invoke();
+                //AddTraceEvent?.Invoke();
             }
         }
         public void SearchAndAddTrace(string input, string Start, string Finish, int mass, DateTime time)
@@ -99,7 +109,7 @@ namespace Transport_company
             if (Search(input) != -1)
             {
                 Company[Search(input)].Traces1.SearchAndPast(new DoublyNode(Start, Finish, mass, time));
-                AddTraceEvent?.Invoke();
+                //AddTraceEvent?.Invoke();
             }
         }
         /// <summary>
@@ -186,5 +196,49 @@ namespace Transport_company
             }
             return sum;
         }
+        
     }
+    public static class Serializator
+    {
+        private static BinaryFormatter _bin = new BinaryFormatter();
+
+        public static void Serialize(string pathOrFileName, object objToSerialise)
+        {
+            using (Stream stream = File.Open(pathOrFileName, FileMode.Create))
+            {
+                try
+                {
+                    _bin.Serialize(stream, objToSerialise);
+                }
+                catch (SerializationException e)
+                {
+                    Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                    throw;
+                }
+            }
+        }
+
+        public static T Deserialize<T>(string pathOrFileName)
+        {
+            T items;
+
+            using (Stream stream = File.Open(pathOrFileName, FileMode.Open))
+            {
+                try
+                {
+                    items = (T)_bin.Deserialize(stream);
+                }
+                catch (SerializationException e)
+                {
+                    Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                    throw;
+                }
+            }
+
+            return items;
+        }
+    }
+}
+namespace System.Runtime.Serialization
+{
 }

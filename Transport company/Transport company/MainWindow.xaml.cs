@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Transport_company
 {
@@ -28,8 +34,8 @@ namespace Transport_company
         public MainWindow()
         {
             InitializeComponent();
-            Auto.AddAutoevent += Auto_AddAutoevent;
-            Auto.AddTraceEvent += Auto_AddTraceEvent;
+            //Auto.AddAutoevent += Auto_AddAutoevent;
+            //Auto.AddTraceEvent += Auto_AddTraceEvent;
         }
 
         private void Auto_AddAutoevent()
@@ -55,6 +61,7 @@ namespace Transport_company
             if (AutoWindow.ShowDialog() == true)
             {
                 Auto.Push(AutoWindow.Model, AutoWindow.GNomber, AutoWindow.NameRider);
+                Auto_AddAutoevent();
             } 
         }
 
@@ -64,7 +71,7 @@ namespace Transport_company
             if (traceModal.ShowDialog() == true)
             {
                 Auto.SearchAndAddTrace(traceModal.AutoInfo.Text, traceModal.GetStart, traceModal.GetFinish, traceModal.GetMass, traceModal.GetDate);
-                
+                Auto_AddTraceEvent();
             }
         }
 
@@ -106,14 +113,25 @@ namespace Transport_company
         private List<TraceList> ConvertTraceInList(AutoT Mass)
         {
             List<TraceList> traceLists = new List<TraceList>();
-            foreach (DoublyNode i in Mass.Traces1)
+            DoublyNode current = Mass.Traces1.Tail1;
+            do
             {
-                traceLists.Add(new TraceList(i.Старт, i.Финиш, i.Время, i.Масса));
+                if (current != null)
+                {
+                    current = current.Next;
+                    traceLists.Add(new TraceList(current.Старт, current.Финиш, current.Время, current.Масса));
+                }
             }
+            while (current != Mass.Traces1.Tail1);
             return traceLists;
         }
 
-        
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Serializator.Serialize("data.dat", Auto);
+            TransportComp test = Serializator.Deserialize<TransportComp>("data.dat");
+            MessageBox.Show($"{test.Sum()}");
+        }
     }
     public class TableAuto
     {

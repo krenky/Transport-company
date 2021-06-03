@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EcX+UQEUmhgnTkdeKjyD7FIPMtb/Bx6xMXzNPFkjls5aGO5oT3BrlDqoRf4VPy0E7FUa1nxuN3CGLgGMy9A2Lw==",
+  "dgSpecHash": "/mtwjHSk5Lj6ILvOBFLrya/1r3/87bFy8C7N4ER7qt6ZMobBIPJMdXEY8yayr2txPbwjuFsHHJs9KSBrfzmRkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Strange\\Documents\\GitHub\\Transport-company\\Transport company\\Transport company\\Transport company.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Strange\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
