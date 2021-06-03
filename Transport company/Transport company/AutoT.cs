@@ -36,7 +36,7 @@ namespace Transport_company
             Name1 = name1;
             SetTraces1(new Trace());
         }
-
+        
         public string Automobile1 { get => Automobile; set => Automobile = value; }
         public string GosNamber1 { get => GosNamber; set => GosNamber = value; }
         public string Name1 { get => Name; set => Name = value; }
