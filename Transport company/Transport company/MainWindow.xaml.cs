@@ -31,6 +31,7 @@ namespace Transport_company
         TransportComp Auto = new TransportComp(5);
         int IndexTable = 0;
 
+
         public MainWindow()
         {
             InitializeComponent();

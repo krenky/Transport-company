@@ -9,6 +9,8 @@ using System.Runtime.Serialization;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
+using Microsoft.Win32;
+using System.Windows;
 
 
 namespace Transport_company
@@ -192,6 +194,7 @@ namespace Transport_company
             int sum = 0;
             foreach(AutoT i in Company)
             {
+                if(i != null)
                 sum = sum + i.Traces1.AllMass();
             }
             return sum;
@@ -204,16 +207,35 @@ namespace Transport_company
 
         public static void Serialize(string pathOrFileName, object objToSerialise)
         {
-            using (Stream stream = File.Open(pathOrFileName, FileMode.Create))
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
             {
-                try
+                using (Stream stream = File.Open(saveFileDialog.FileName, FileMode.Create))
                 {
-                    _bin.Serialize(stream, objToSerialise);
+                    try
+                    {
+                        _bin.Serialize(stream, objToSerialise);
+                    }
+                    catch (SerializationException e)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                        throw;
+                    }
                 }
-                catch (SerializationException e)
+            }
+            else
+            {
+                using (Stream stream = File.Open(pathOrFileName, FileMode.Create))
                 {
-                    Console.WriteLine("Failed to serialize. Reason: " + e.Message);
-                    throw;
+                    try
+                    {
+                        _bin.Serialize(stream, objToSerialise);
+                    }
+                    catch (SerializationException e)
+                    {
+                        Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+                        throw;
+                    }
                 }
             }
         }
@@ -221,7 +243,24 @@ namespace Transport_company
         public static T Deserialize<T>(string pathOrFileName)
         {
             T items;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == true)
+            {
+                using (Stream stream = File.Open(openFileDialog.FileName, FileMode.Open))
+                {
+                    try
+                    {
+                        items = (T)_bin.Deserialize(stream);
+                    }
+                    catch (SerializationException e)
+                    {
+                        Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+                        throw;
+                    }
+                }
 
+                return items;
+            }
             using (Stream stream = File.Open(pathOrFileName, FileMode.Open))
             {
                 try
