@@ -73,39 +73,6 @@ namespace Transport_company
             //}
             //return false;
         }
-        /// <summary>
-        /// вставляет элементы высчитавая индекс по формуле
-        ///  ((индекс пос.элемента+1) % count)
-        /// </summary>
-        /// <param name="auto"></param>
-        /// <returns></returns>
-        public bool Push(AutoT auto)
-        {
-            if (!isFull())
-            {
-                if (Head == -1) Head = 0;
-                Tail = (Tail + 1) % Count;
-                Company[Tail] = auto;
-                //AddAutoevent?.Invoke();
-                return true;
-            }
-            return false;
-        }
-        /// <summary>
-        /// метод для добавления поездки
-        /// </summary>
-        /// <param name="input">данные для поиска</param>
-        /// <param name="Start"></param>
-        /// <param name="Finish"></param>
-        /// <param name="mass"></param>
-        public void SearchAndAddTrace(string input, string Start, string Finish, int mass)
-        {
-            if (Search(input) != -1)
-            {
-                Company[Search(input)].Traces1.Add(new DoublyNode(Start, Finish, mass));
-                //AddTraceEvent?.Invoke();
-            }
-        }
         public void SearchAndAddTrace(string input, string Start, string Finish, int mass, DateTime time)
         {
             if (Search(input) != -1)
@@ -142,31 +109,15 @@ namespace Transport_company
             {
                 return true;
             }
-            else if (Company[Tail].GosNamber1 == Input)
+            else if (Company[Index].GosNamber1 == Input)
             {
                 return true;
             }
-            else if (Company[Tail].Name1 == Input)
+            else if (Company[Index].Name1 == Input)
             {
                 return true;
             }
             else return false;
-        }
-        /// <summary>
-        /// метод вывода информации об искомой машине
-        /// </summary>
-        /// <param name="Input"></param>
-        /// <returns>информация об автомобиле</returns>
-        public string SearchAndPrint(string Input)
-        {
-            if (Search(Input) == -1)
-            {
-                return "Not found";
-            }
-            else
-            {
-                return Print(Search(Input));
-            }
         }
         /// <summary>
         /// метод вывода информации об автомобиле

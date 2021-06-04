@@ -15,13 +15,6 @@ namespace Transport_company
         string Name;
         Trace Traces;
 
-        //public AutoT()
-        //{
-        //    Automobile = "";
-        //    GosNamber = "";
-        //    Name = "";
-        //}
-
         public AutoT()
         {
             Automobile1 = "";

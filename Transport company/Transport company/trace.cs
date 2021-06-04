@@ -61,34 +61,6 @@ namespace Transport_company
         }
 
         /// <summary>
-        /// Добавление нового маршрута
-        /// без груза
-        /// </summary>
-        /// <param name="Start">Начало маршрута</param>
-        /// <param name="Finish">конец маршрута</param>
-        public void Add(string Start, string Finish)
-        {
-            DoublyNode node = new DoublyNode(Start, Finish);
-
-            if (Head == null)
-            {
-                Head = node;
-                Head.Next = node;
-                Head.Previous = node;
-            }
-            else
-            {
-                node.Previous = Head.Previous;
-                node.Next = Head;
-                Head.Previous.Next = node;
-                Head.Previous = node;
-            }
-            ChangeListEvent?.Invoke();
-            Tail = node;
-            Count++;
-        }
-
-        /// <summary>
         /// Поиск и удаление маршрута
         /// </summary>
         /// <param name="start">Начало маршрута</param>
@@ -165,10 +137,12 @@ namespace Transport_company
             DoublyNode Current = Head;
             do
             {
+                if (Count == 0) return sum;
                 if (Current != null)
                 {
                     sum = sum + Current.Масса;
                 }
+                Current = Current.Next;
             }
             while (Current != Head);
             return sum;

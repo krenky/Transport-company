@@ -29,3 +29,5 @@ Z:\Факультет Информационных Технологий\SNazarov
 Z:\Факультет Информационных Технологий\SNazarov\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.pdb
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
 C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\Transport company.csproj.CopyComplete
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\RemoveModalWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Debug\net5.0-windows\RemoveModalWindow.baml

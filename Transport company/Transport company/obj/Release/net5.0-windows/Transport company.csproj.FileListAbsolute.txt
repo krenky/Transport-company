@@ -1,0 +1,28 @@
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.exe
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.deps.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.runtimeconfig.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.runtimeconfig.dev.json
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\ref\Transport company.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\bin\Release\net5.0-windows\Transport company.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.csprojAssemblyReference.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\AutoModalWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\MainWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\RemoveModalWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\TraceModalWindow.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\App.g.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company_MarkupCompile.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company_MarkupCompile.lref
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\AutoModalWindow.baml
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\MainWindow.baml
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\RemoveModalWindow.baml
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\TraceModalWindow.baml
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.g.resources
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.AssemblyInfoInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.AssemblyInfo.cs
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.csproj.CoreCompileInputs.cache
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\ref\Transport company.dll
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.pdb
+C:\Users\Strange\Documents\GitHub\Transport-company\Transport company\Transport company\obj\Release\net5.0-windows\Transport company.genruntimeconfig.cache

@@ -38,12 +38,16 @@ namespace Transport_company
             //Auto.AddAutoevent += Auto_AddAutoevent;
             //Auto.AddTraceEvent += Auto_AddTraceEvent;
         }
-
+        /// <summary>
+        /// Метод обновления первичной таблицы
+        /// </summary>
         private void Auto_AddAutoevent()
         {
             TableCompany.ItemsSource = ConvertMassInList(Auto.Company1);
         }
-
+        /// <summary>
+        /// Метод обновления вторичной таблицы
+        /// </summary>
         private void Auto_AddTraceEvent()
         {
             try
@@ -84,8 +88,6 @@ namespace Transport_company
                 {
                     traceList = (TableAuto)TableCompany.CurrentItem;
                     IndexTable = TableCompany.SelectedIndex;
-                    //TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, Auto.Search(traceList.Госномер));
-                    //TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1, IndexTable);
                     TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1[IndexTable]);
                 }
             }
@@ -99,6 +101,11 @@ namespace Transport_company
         {
             
         }
+        /// <summary>
+        /// конвертация списка автомобилей в в list
+        /// </summary>
+        /// <param name="Mass"></param>
+        /// <returns></returns>
         private List<TableAuto> ConvertMassInList(AutoT[] Mass)
         {
             List<TableAuto> List = new List<TableAuto>();
@@ -111,6 +118,11 @@ namespace Transport_company
             }
             return List;
         }
+        /// <summary>
+        /// конвертация списка маршрутов в в list
+        /// </summary>
+        /// <param name="Mass"></param>
+        /// <returns></returns>
         private List<TraceList> ConvertTraceInList(AutoT Mass)
         {
             List<TraceList> traceLists = new List<TraceList>();
@@ -126,12 +138,40 @@ namespace Transport_company
             while (current != Mass.Traces1.Tail1);
             return traceLists;
         }
-
+        /// <summary>
+        /// сохранение в файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Serializator.Serialize("data.dat", Auto);
+        }
+        /// <summary>
+        /// открытие файла
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
             TransportComp test = Serializator.Deserialize<TransportComp>("data.dat");
-            MessageBox.Show($"{test.Sum()}");
+            Auto = test;
+            TableCompany.ItemsSource = ConvertMassInList(Auto.Company1);
+            TableTrace.ItemsSource = ConvertTraceInList(Auto.Company1[IndexTable]);
+        }
+        /// <summary>
+        /// удаление маршрута
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            RemoveModalWindow removeModalWindow = new RemoveModalWindow();
+            if (removeModalWindow.ShowDialog() == true) 
+            {
+                Auto.Company1[IndexTable].Traces1.Remove(removeModalWindow.GetStart, removeModalWindow.GetFinish);
+                Auto_AddTraceEvent();
+            }
         }
     }
     public class TableAuto
